@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>ACroN</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .card {
+        position: relative;
+        width: 300px;
+        height: 300px; /* Rasm hajmi 300px */
+        overflow: hidden;
+        margin-bottom: 20px;
+        mar
+      }
+      .card img {
+        position: absolute;
+        width: 300px; /* Kengligi 300px */
+        height: 300px; /* Balandligi 300px */
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .card img.active {
+        opacity: 1;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%);
+      }
+      .buttons button {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .buttons button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .card_desc {
+        text-align: center;
+        max-width: 300px;
+        font-size: 17px;
+        line-height: 1.5;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <ul class="header__list">
+        <li class="li">
+          <span class="list__item">temporarily closed site</span>
+        </li>
+      </ul>
+    </header>
+    <section class="hero">
+      <div class="card">
+        <img class="card__img active" src="./images/infin.jpg" alt="Image 1" />
+        <img class="card__img" src="./images/infin (1).jpg" alt="Image 2" />
+        <img class="card__img" src="./images/infin (2).jpg" alt="Image 3" />
+        <img class="card__img" src="./images/infin (3).jpg" alt="Image 4" />
+        <img class="card__img" src="./images/infin (4).jpg" alt="Image 5" />
+        <div class="buttons">
+          <button id="prevBtn">Prev</button>
+          <button id="nextBtn">Next</button>
+        </div>
+      </div>
+      <span class="card_desc">
+        Who is Infin really? Infin's full name is Infin Prime Time. He is
+        considered the wielder of ancient powers and their ruler. His age is
+        so immense that even if the age of the universe were multiplied by
+        1,000, it would still not match Infin's age. Most importantly, he is
+        the strongest being in the entire cosmos and all existence. No
+        creature is capable of defeating him.
+      </span>
+    </section>
+    <script>
+      const images = document.querySelectorAll(".card__img");
+      let currentIndex = 0;
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        images[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        images[currentIndex].classList.add("active");
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        images[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add("active");
+      });
+    </script>
+  </body>
+</html>
